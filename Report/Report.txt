@@ -1,0 +1,61 @@
+                            
+                                   THYROID DISEASE CLASSIFICATION USING ML
+
+
+Introduction:
+
+               *The thyroid gland is a small organ thats located in the front of the neck,wrapped around 
+  the windpipe.
+
+*Its shaped like a butterfly,smaller in the middle with two wide wings that extend around the side 
+  0f your throat.
+
+*Define Problem / Problem Understanding:
+
+                        Specify the business problem
+
+                        Business requirements
+
+                        Literature Survey
+
+                        Social or Business Impact.
+
+
+*Data Collection & Preparation:
+
+                         Collecet the data
+
+                         Data Preparation
+
+                         Exploratory Data Analysis
+
+                         Descriptive statistical 
+
+*Visual Analysis:
+
+                         Model Building
+
+                         Training the model in multiple algorithms 
+
+                         Testing the model
+
+                         Performance Testing & Hyperparameter Tuning
+
+                        Testing model with multiple evaluation metrics
+
+                        Comparing model accuracy before & after applying hyperparameter tuning
+
+*Model Deployment:
+
+                      Save the best model 
+
+                      Integrate with Web Framework
+
+*Project Demonstration & Documentation:
+
+                     Record explanation Video for project end to end solution
+
+                    Project Documentation-Step by step project development procedure
+
+             
+                        

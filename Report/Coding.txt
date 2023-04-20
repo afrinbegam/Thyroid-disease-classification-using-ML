@@ -1,0 +1,139 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Layer,Dense,Dropout
+
+data = pd.read_csv("data.csv")
+data.head()
+
+data.shape
+data.isnull().sum()
+data.drop['TSH_measured','T3_measred','TT4_me_measurd','referral_source','patient_']
+data = pd.read_csv("data.csv")
+#re-mapping target values to diagnostic group
+diagnoses={'A':'hyperthyroid conditions',
+           'B':'hyperthyroid conditions',
+           'c':'hyperthyroid conditions',
+           'D':'hyperthyroid conditions',
+           'E':'hypothyroid conditions',
+           'F':'hypothyroid conditions',
+           'G':'hypothyroid conditions',
+           'H':'hypothyroid conditions',
+           'I':'bilding protein',
+           'J':'bilding protein',
+           'K':'general health',
+           'L':'replacement therapy',
+           'M':'replacement therapy',
+           'N':'replacement therapy',
+           'O':'antithyroid treatment',
+           'P':'antithyroid treatment',
+           'Q':'antithyroid treatment',
+           'R':'miscellaneous',
+           'S':'miscellaneous',
+           'T':'miscellaneous'}
+data['target']=data['target'].map(diagnoses)#remapping
+
+data.dropna(subset=['target'],inplace=True)
+data['target'].value_counts()
+#Checking whether the age above 100
+data[data.age>100]
+#splitting the data values as and y
+x=data.iloc[:,0:-1]
+y= data.iloc[:,-1]
+X['sex'].unique()
+X['sex'].replace(np.nan,'F',inplace=True)
+X['sex'].value_counts()
+X['age']=X['age'].astype('float')
+X['TSH']=X['TSH'].astype('float')
+X['TT4']=X['TT4'].astype('float')
+X['T4U']=X['T4U'].astype('float')
+X['FIT']=X['FIT'].astype('float')
+X['TBG']=X['TBG'].astype('float')
+x.info()
+#Encoding the categorical data
+#Encoding the independent(output) variable
+from sklearn.preprocessing import OrdinalEncoder,LabelEncoder
+#categorical data
+
+ordinal_encoder = OrdinalEncoder(dtype ='int64')
+x.iloc[:,1:16] = ordinal_encoder.fit_transform(x.iloc[:,1:16])
+#ordinal_encoder.fit_transform9X[['sex]])
+lader_encoder = LabelEncoder()
+y_dt= label_encoder.fit_transform(y)
+y=pd.DataFrame(y_dt,columns=['target'])
+#splitting the data values as x and y
+x=data.iloc[:,0:-1]
+y=data.iloc[:,-1]
+from sklearn.model_section import train_split
+x_train,x_test,y_train,y_test=train_test_split(x,y_test_size=0.20,random_state=0)
+from imblearn.over_sampling import SMOTE
+y_train.value_counts)
+os=SMOTE(random_state=0,k_neihbors=1)
+x_bal,y_bal=os.fit_resample(x_train,y_train)
+x_test_bal,y_test_bal=os.fit_resample(x_test,y_test)
+from sklearn.preprocessing import StandarsScaler
+sc=StsndardScaler()
+x_bal=sc.fit_transform(x_bal)
+x_test_bal=sc.transform(x_test_bal)
+#perform feature importance
+from sklearn.inspection import permutation_importance
+result=permutation(rfr,x_bal,y_bal,scoring='accuracy')
+
+#get importance
+feature_importance=['age','sex','on_thyroine']
+importance=results.importance_mean
+importance=np.sort(importance)
+#summerize feature importance
+for i,v in enumerate(importance):
+    i=feature_importance[i]
+    print('feature:{:<20} source:{}'.format(i,v))
+#plot importance feature
+pllt.figure(figsize=(10,10))
+plt.bar(x=feature_importance,height=importance)
+plt.xticks(rotation=30,ha='right')
+plt.show()
+#Checking correlation using Heatmap
+import seaborn as sns
+corrmat=x.corr()
+f,ax=plt.subplots(figsize=(9,8))
+sns.heatmap(corrmat,ax=ax,cmap="YLGnBu",linewidths=0.1)
+from sklearn.ensemble import RandomForestClassifier
+rfr1=RandomForestClassifier()
+rfr1=RandomForestClassifier()
+rfr1.fit(x_os,y-os.value.raval())
+
+y_pred=rf1.predict(x_test_os)
+y_pred=rfr1.predict(x-test_os0
+print(classification_report(y_test_os_pread))
+
+from xgboost import xGBClassifier
+xgb1=XGBClassifier()
+xgb1.fit(x_os,y_os)
+y_pred=xgb1.predict(x_test_os)
+print(Classifier_report(t_test_os,y_pread))
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score,classification_report
+sv=SVC()
+sv.fit(x_bal,y_bal)
+y_pred=sv.predict(x_test_bal)
+print(classification_report(y_test_bal,y_pread))
+
+model=Sequential()
+model.add(Dense(units=128,activation='relu',input_shape=(10)))
+model.add(Dense(units=128,activation='relu',kernel_initializer='random_uniform'))
+model.add(Dropout(0.2))
+model.add(Dense(units=256,activation='relu',kerne_initializer='random_uniform'))
+model.add(Dropout(0.2))
+model.add(Dense(units=128,activation='relu',kernel_initializer='random_uniform'))
+
+model.add(Dense(units=1,activation='sigmoid'))
+model.summary()
+model.compile(loss='binary_corssentropy',optimizer='adam',metrics=['accuracy']
+model.fit(x_bal,y-bal,validation_data=[x_test_bal,y_test_bal],epoch=15
+
+print(classification_report(y_tesdt_bal,y_pred))
+print(classification_report(y_tesdt_bal,y_pred))
+y_pred=sv.predict(x_test_bal)
+print(classification_report(y_tesdt_bal,y_pred))
